@@ -1,0 +1,90 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Contract
+    network: base
+    source:
+      address: "206571b68c66E1d112b74d65695043ad2b5F95D5"
+      abi: Contract
+      startBlock: 2368339
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - ApprovalForAll
+        - BatchSizeLimitSet
+        - MessageFailed
+        - OperatorFilterRegistryAddressUpdated
+        - OperatorFilterRegistryRevoked
+        - OwnershipTransferred
+        - PrimeSet
+        - ReceiveBatchFromChain
+        - ReceiveFromChain
+        - RetryMessageSuccess
+        - SendBatchToChain
+        - SendToChain
+        - SetMinDstGas
+        - SetPrecrime
+        - SetTrustedRemote
+        - SetTrustedRemoteAddress
+        - SetUseCustomAdapterParams
+        - SpendGatewayRegistered
+        - SpendInvoked
+        - TransferBatch
+        - TransferSingle
+        - TrustedForwarderSet
+        - URI
+      abis:
+        - name: Contract
+          file: ./abis/Contract.json
+      eventHandlers:
+        - event: ApprovalForAll(indexed address,indexed address,bool)
+          handler: handleApprovalForAll
+        - event: BatchSizeLimitSet(uint256)
+          handler: handleBatchSizeLimitSet
+        - event: MessageFailed(uint16,bytes,uint64,bytes,bytes)
+          handler: handleMessageFailed
+        - event: OperatorFilterRegistryAddressUpdated(address)
+          handler: handleOperatorFilterRegistryAddressUpdated
+        - event: OperatorFilterRegistryRevoked()
+          handler: handleOperatorFilterRegistryRevoked
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: PrimeSet(address)
+          handler: handlePrimeSet
+        - event: ReceiveBatchFromChain(indexed uint16,indexed bytes,indexed address,uint256[],uint256[])
+          handler: handleReceiveBatchFromChain
+        - event: ReceiveFromChain(indexed uint16,indexed bytes,indexed address,uint256,uint256)
+          handler: handleReceiveFromChain
+        - event: RetryMessageSuccess(uint16,bytes,uint64,bytes32)
+          handler: handleRetryMessageSuccess
+        - event: SendBatchToChain(indexed uint16,indexed address,indexed bytes,uint256[],uint256[])
+          handler: handleSendBatchToChain
+        - event: SendToChain(indexed uint16,indexed address,indexed bytes,uint256,uint256)
+          handler: handleSendToChain
+        - event: SetMinDstGas(uint16,uint16,uint256)
+          handler: handleSetMinDstGas
+        - event: SetPrecrime(address)
+          handler: handleSetPrecrime
+        - event: SetTrustedRemote(uint16,bytes)
+          handler: handleSetTrustedRemote
+        - event: SetTrustedRemoteAddress(uint16,bytes)
+          handler: handleSetTrustedRemoteAddress
+        - event: SetUseCustomAdapterParams(bool)
+          handler: handleSetUseCustomAdapterParams
+        - event: SpendGatewayRegistered(indexed address,address,address,address)
+          handler: handleSpendGatewayRegistered
+        - event: SpendInvoked(indexed address,address,address,address,uint256,uint256[],uint256[],uint256,uint256,bytes)
+          handler: handleSpendInvoked
+        - event: TransferBatch(indexed address,indexed address,indexed address,uint256[],uint256[])
+          handler: handleTransferBatch
+        - event: TransferSingle(indexed address,indexed address,indexed address,uint256,uint256)
+          handler: handleTransferSingle
+        - event: TrustedForwarderSet(address)
+          handler: handleTrustedForwarderSet
+        - event: URI(string,indexed uint256)
+          handler: handleURI
+      file: ./src/contract.ts

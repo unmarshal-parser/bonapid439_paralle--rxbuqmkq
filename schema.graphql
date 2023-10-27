@@ -1,0 +1,234 @@
+type ApprovalForAll @entity(immutable: true) {
+  id: Bytes!
+  account: Bytes! # address
+  operator: Bytes! # address
+  approved: Boolean! # bool
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type BatchSizeLimitSet @entity(immutable: true) {
+  id: Bytes!
+  batchSizeLimit: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type MessageFailed @entity(immutable: true) {
+  id: Bytes!
+  _srcChainId: Int! # uint16
+  _srcAddress: Bytes! # bytes
+  _nonce: BigInt! # uint64
+  _payload: Bytes! # bytes
+  _reason: Bytes! # bytes
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type OperatorFilterRegistryAddressUpdated @entity(immutable: true) {
+  id: Bytes!
+  newRegistry: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type OperatorFilterRegistryRevoked @entity(immutable: true) {
+  id: Bytes!
+
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type OwnershipTransferred @entity(immutable: true) {
+  id: Bytes!
+  previousOwner: Bytes! # address
+  newOwner: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type PrimeSet @entity(immutable: true) {
+  id: Bytes!
+  prime: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ReceiveBatchFromChain @entity(immutable: true) {
+  id: Bytes!
+  _srcChainId: Int! # uint16
+  _srcAddress: Bytes! # bytes
+  _toAddress: Bytes! # address
+  _tokenIds: [BigInt!]! # uint256[]
+  _amounts: [BigInt!]! # uint256[]
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ReceiveFromChain @entity(immutable: true) {
+  id: Bytes!
+  _srcChainId: Int! # uint16
+  _srcAddress: Bytes! # bytes
+  _toAddress: Bytes! # address
+  _tokenId: BigInt! # uint256
+  _amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type RetryMessageSuccess @entity(immutable: true) {
+  id: Bytes!
+  _srcChainId: Int! # uint16
+  _srcAddress: Bytes! # bytes
+  _nonce: BigInt! # uint64
+  _payloadHash: Bytes! # bytes32
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SendBatchToChain @entity(immutable: true) {
+  id: Bytes!
+  _dstChainId: Int! # uint16
+  _from: Bytes! # address
+  _toAddress: Bytes! # bytes
+  _tokenIds: [BigInt!]! # uint256[]
+  _amounts: [BigInt!]! # uint256[]
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SendToChain @entity(immutable: true) {
+  id: Bytes!
+  _dstChainId: Int! # uint16
+  _from: Bytes! # address
+  _toAddress: Bytes! # bytes
+  _tokenId: BigInt! # uint256
+  _amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SetMinDstGas @entity(immutable: true) {
+  id: Bytes!
+  _dstChainId: Int! # uint16
+  _type: Int! # uint16
+  _minDstGas: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SetPrecrime @entity(immutable: true) {
+  id: Bytes!
+  precrime: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SetTrustedRemote @entity(immutable: true) {
+  id: Bytes!
+  _remoteChainId: Int! # uint16
+  _path: Bytes! # bytes
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SetTrustedRemoteAddress @entity(immutable: true) {
+  id: Bytes!
+  _remoteChainId: Int! # uint16
+  _remoteAddress: Bytes! # bytes
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SetUseCustomAdapterParams @entity(immutable: true) {
+  id: Bytes!
+  _useCustomAdapterParams: Boolean! # bool
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SpendGatewayRegistered @entity(immutable: true) {
+  id: Bytes!
+  handler: Bytes! # address
+  nftDestinationAddress: Bytes! # address
+  nativeTokenDestinationAddress: Bytes! # address
+  primeDestinationAddress: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SpendInvoked @entity(immutable: true) {
+  id: Bytes!
+  from: Bytes! # address
+  nftDestination: Bytes! # address
+  nativeDestination: Bytes! # address
+  primeDestination: Bytes! # address
+  Contract_id: BigInt! # uint256
+  _tokenIds: [BigInt!]! # uint256[]
+  _amounts: [BigInt!]! # uint256[]
+  nativeValue: BigInt! # uint256
+  primeValue: BigInt! # uint256
+  data: Bytes! # bytes
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type TransferBatch @entity(immutable: true) {
+  id: Bytes!
+  operator: Bytes! # address
+  from: Bytes! # address
+  to: Bytes! # address
+  ids: [BigInt!]! # uint256[]
+  values: [BigInt!]! # uint256[]
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type TransferSingle @entity(immutable: true) {
+  id: Bytes!
+  operator: Bytes! # address
+  from: Bytes! # address
+  to: Bytes! # address
+  Contract_id: BigInt! # uint256
+  value: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type TrustedForwarderSet @entity(immutable: true) {
+  id: Bytes!
+  forwarder: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type URI @entity(immutable: true) {
+  id: Bytes!
+  value: String! # string
+  Contract_id: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
